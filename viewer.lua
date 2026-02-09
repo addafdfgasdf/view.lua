@@ -26,12 +26,31 @@ UIStroke.Color = Color3.fromRGB(255, 255, 255)
 UIStroke.Transparency = 0.7
 
 local Title = Instance.new("TextLabel", Main)
-Title.Size = UDim2.new(1, 0, 0, 40)
+Title.Size = UDim2.new(1, -40, 0, 40)
+Title.Position = UDim2.new(0, 10, 0, 0)
 Title.Text = "PHANTOM // UNIVERSE_SCAN"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.Font = Enum.Font.GothamBold
 Title.BackgroundTransparency = 1
 Title.TextSize = 14
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+-- === КНОПКА ЗАКРЫТИЯ ===
+local CloseBtn = Instance.new("TextButton", Main)
+CloseBtn.Name = "CloseButton"
+CloseBtn.Size = UDim2.new(0, 30, 0, 30)
+CloseBtn.Position = UDim2.new(1, -35, 0, 5)
+CloseBtn.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
+CloseBtn.BackgroundTransparency = 0.8
+CloseBtn.Text = "✕"
+CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseBtn.Font = Enum.Font.GothamBold
+CloseBtn.TextSize = 14
+Instance.new("UICorner", CloseBtn).CornerRadius = UDim.new(0, 6)
+
+CloseBtn.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
 
 -- Поле поиска
 local SearchBar = Instance.new("TextBox", Main)
@@ -147,7 +166,7 @@ SearchBtn.MouseButton1Click:Connect(function()
     if id then scanUniverse(id) else Status.Text = "INVALID ID" end
 end)
 
--- Драг
+-- Драг (Перемещение окна)
 local dragStart, startPos, dragging
 Main.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
