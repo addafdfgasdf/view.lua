@@ -9,7 +9,7 @@ local PROXY = "https://develop.roproxy.com/v1/universes/%s/places?limit=100"
 
 -- === GUI ===
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "PhantomExplorer_V2"
+ScreenGui.Name = "NilometryExplorer_V2"
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = gethui and gethui() or LocalPlayer:WaitForChild("PlayerGui")
 
@@ -28,7 +28,7 @@ UIStroke.Transparency = 0.7
 local Title = Instance.new("TextLabel", Main)
 Title.Size = UDim2.new(1, -40, 0, 40)
 Title.Position = UDim2.new(0, 10, 0, 0)
-Title.Text = "PHANTOM // UNIVERSE_SCAN"
+Title.Text = "NILOMETRY // UNIVERSE_SCAN"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.Font = Enum.Font.GothamBold
 Title.BackgroundTransparency = 1
@@ -88,7 +88,7 @@ UIList.Padding = UDim.new(0, 4)
 local Status = Instance.new("TextLabel", Main)
 Status.Size = UDim2.new(1, 0, 0, 25)
 Status.Position = UDim2.new(0, 0, 0.9, 0)
-Status.Text = "READY TO SCAN"
+Status.Text = "BY NILOMETRY | READY"
 Status.TextColor3 = Color3.fromRGB(150, 150, 150)
 Status.Font = Enum.Font.Code
 Status.BackgroundTransparency = 1
@@ -146,7 +146,7 @@ local function scanUniverse(uId)
                     addPlace(p.name or "Unnamed", p.id)
                 end
                 Scroll.CanvasSize = UDim2.new(0, 0, 0, UIList.AbsoluteContentSize.Y)
-                Status.Text = "SCAN COMPLETE: " .. #data.data .. " PLACES FOUND"
+                Status.Text = "NILOMETRY: " .. #data.data .. " PLACES FOUND"
             else
                 Status.Text = "NO PLACES FOUND"
             end
